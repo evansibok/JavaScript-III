@@ -83,29 +83,38 @@
 function Person(name, age){
   this.name = name;
   this.age = Number(age);
-  this.eat = edible;
-  this.stomach = full;
+  this.eat = true;
+  this.stomach = false;
 }
+var adam = new Person('Adam', '23');
 
 Person.prototype.greet = function(){
   console.log(`Hello ${this.name}, you are ${this.age} today!`);
 }
 
 Person.prototype.eatEdibles = function(){
-  if(this.eat === edible) {
-    return `${this.name} is eating an edible food`;
+  if(this.eat) {
+    return `${this.name} your food is edible`;
   }
-  return `${this.name}, that isn't edible`
+  return `${this.name}, that isn't edible`;
 }
 
 Person.prototype.poop = function(){
-  this.stomach = empty;
+  if(this.stomach){
+    return `${this.name} you need to use the restroom`;
+  }
+  return `${this.name} you are good to go`;
 }
 
-var adam = new Person('Adam', '23');
+// TASK 2
 
-
-
+//   - Build a Car constructor that takes model name and make.
+//   - Give cars the ability to drive a distance.
+//   - By driving a car, the distance driven should be added to an "odometer" property.
+//   - Give cars the ability to crash.
+//   - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
+//   - Give cars the ability to be repaired.
+//   - A repaired car can be driven again.
 
 
 
