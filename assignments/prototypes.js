@@ -71,6 +71,44 @@
 
 */
 
+// TASK 1
+
+//   - Build a Person Constructor that takes name and age.
+//   - Give persons the ability to greet by returning a string stating name and age.
+//   - Give persons the ability to eat edibles.
+//   - When eating an edible, it should be pushed into a "stomach" property which is an array.
+//   - Give persons the ability to poop.
+//   - When pooping, the stomach should empty.
+
+function Person(name, age){
+  this.name = name;
+  this.age = Number(age);
+  this.eat = edible;
+  this.stomach = full;
+}
+
+Person.prototype.greet = function(){
+  console.log(`Hello ${this.name}, you are ${this.age} today!`);
+}
+
+Person.prototype.eatEdibles = function(){
+  if(this.eat === edible) {
+    return `${this.name} is eating an edible food`;
+  }
+  return `${this.name}, that isn't edible`
+}
+
+Person.prototype.poop = function(){
+  this.stomach = empty;
+}
+
+var adam = new Person('Adam', '23');
+
+
+
+
+
+
 /*
 
   STRETCH TASK
