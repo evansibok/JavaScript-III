@@ -84,7 +84,7 @@ function Person(name, age){
   this.name = name;
   this.age = Number(age);
   this.eat = true;
-  this.stomach = false;
+  this.stomach = [];
 }
 var adam = new Person('Adam', '23');
 
@@ -92,9 +92,10 @@ Person.prototype.greet = function(){
   console.log(`Hello ${this.name}, you are ${this.age} today!`);
 }
 
-Person.prototype.eatEdibles = function(){
+Person.prototype.eatEdibles = function(food){
   if(this.eat) {
-    return `${this.name} your food is edible`;
+    this.stomach.push(food)
+    return `${this.name} your ${this.stomach} is edible`;
   }
   return `${this.name}, that isn't edible`;
 }
@@ -116,6 +117,26 @@ Person.prototype.poop = function(){
 //   - Give cars the ability to be repaired.
 //   - A repaired car can be driven again.
 
+function Car(model, make) {
+  this.model = model;
+  this.make = make;
+}
+
+Car.prototype.drive = function() {
+  this.odometer = Number(distance);
+  return
+}
+
+Car.prototype.crash = function() {
+  this.drive = false;
+  return `I crashed at ${odometer} miles`;
+}
+
+Car.prototype.repair = function() {
+  this.drive = true;
+}
+
+var toyota = new Car('Toyota', 'Camry');
 
 
 /*
