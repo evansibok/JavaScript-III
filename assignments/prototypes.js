@@ -122,21 +122,26 @@ function Car(model, make) {
   this.make = make;
 }
 
-Car.prototype.drive = function() {
+Car.prototype.drive = function(distance) {
   this.odometer = Number(distance);
-  return
+  return `${this.model} ${this.make} has been driven for ${this.odometer} miles`;
 }
 
 Car.prototype.crash = function() {
-  this.drive = false;
-  return `I crashed at ${odometer} miles`;
+  this.drive.pop();
+  return `${this.model} ${this.make} has crashed and can't be driven.`;
 }
 
 Car.prototype.repair = function() {
-  this.drive = true;
+  this.drive.push();
+  return `${this.model} ${this.make} has been repaired as is safe for driving.`;
 }
 
 var toyota = new Car('Toyota', 'Camry');
+
+// toyota.drive('70');
+// toyota.crash();
+// toyota.repair();
 
 
 /*
