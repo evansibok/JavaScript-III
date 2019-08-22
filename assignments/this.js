@@ -38,6 +38,18 @@ laugh.exposeLaugh();
 
 // code example for New Binding
 
+function Teacher(name, course){
+    this.name = name;
+    this.course = course;
+}
+
+Teacher.prototype.introduction = function(){
+    console.log(`My name is ${this.name} and I teach ${this.course}`)
+}
+
+var bimbo = new Teacher('Bimbo', 'Physics');
+bimbo.introduction();
+
 // Principle 4
 
 // code example for Explicit Binding
