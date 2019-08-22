@@ -44,6 +44,7 @@ function Teacher(name, course){
 }
 
 Teacher.prototype.introduction = function(){
+    console.log(`implicit binding  `, this)
     console.log(`My name is ${this.name} and I teach ${this.course}`)
 }
 
@@ -53,3 +54,4 @@ bimbo.introduction();
 // Principle 4
 
 // code example for Explicit Binding
+
