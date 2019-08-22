@@ -120,6 +120,7 @@ Person.prototype.poop = function(){
 function Car(model, make) {
   this.model = model;
   this.make = make;
+  this.odometer = Number(distance);
 }
 
 Car.prototype.drive = function(distance) {
