@@ -13,9 +13,8 @@
 
 // code example for Window Binding
 
-function sayMyName(name) {
+function sayMyName() {
     console.log(this);
-    return this.name;
 }
 sayMyName("Evans");
 
