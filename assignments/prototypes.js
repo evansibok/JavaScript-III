@@ -35,32 +35,6 @@
   console.log(jumbo.isFlying)          // false
 */
 
-/*
-  TASK 2
-
-  - Build a Car constructor that takes model name and make.
-  - Give cars the ability to drive a distance.
-  - By driving a car, the distance driven should be added to an "odometer" property.
-  - Give cars the ability to crash.
-  - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
-  - Give cars the ability to be repaired.
-  - A repaired car can be driven again.
-
-  TASK 3
-
-  - Build a Baby constructor that subclasses the Person built earlier.
-  - Babies of course inherit the ability to greet, which can be strange.
-  - Babies should have the ability to play, which persons don't.
-  - By playing, a string is returned with some text of your choosing.
-
-  TASK 4
-
-  Use your imagination and come up with constructors that allow to build objects
-  With amazing and original capabilities. Build 3 small ones, or a very
-  complicated one with lots of state. Surprise us!
-
-*/
-
 // TASK 1
 
 //   - Build a Person Constructor that takes name and age.
@@ -154,13 +128,74 @@ function Baby(name, age){
 Baby.prototype = Object.create(Person.prototype);
 
 Baby.prototype.play = () => {
-  return `I am ${this.name} and I am playing!`; // * this.name doesn't return the baby's name, why?
+  console.log(this.name);
+  return `I am ${this.name} and I am playing!`; // this.name doesn't return the baby's name, why?
 }
 
 const toni = new Baby({
   name: "Baby Toni",
   age: "12 months",
+});
+
+
+// TASK 4
+
+// Use your imagination and come up with constructors that allow to build objects
+// With amazing and original capabilities.Build 3 small ones, or a very
+// complicated one with lots of state.Surprise us!
+
+function Electronics(info){
+  this.maker = info.maker,
+  this.year = Number(info.year),
+  this.model = info.model
+}
+
+function Phone(info){
+  Electronics.call(this, info);
+}
+
+Phone.prototype = Object.create(Electronics.prototype);
+
+Phone.prototype.ring = () => {
+  console.log(`${this.maker} ${this.model} Grriiiiinnnnngggg!`); // this.maker and this.model returning `undefined`
+}
+
+function Laptop(info){
+  Electronics.call(this, info);
+  this.turnOn = true;
+}
+
+
+Laptop.prototype.turnOn = () => {
+  if (this.turnOn)
+    console.log(`${this.maker} ${this.model} is coming ON!`); // this.maker and this.model returning `undefined`
+}
+Laptop.prototype = Object.create(Electronics.prototype);
+
+TV.prototype = Object.create(Laptop.prototype);
+
+function TV(info) {
+  Laptop.call(this, info);
+}
+
+const samsung = new Phone({
+  maker: "Samsung",
+  model: "smart",
+  year: 2000,
 })
+
+const hp = new Laptop({
+  maker: "HP",
+  model: "Notebook",
+  year: 2003,
+})
+
+const sony = new TV({
+  maker: "Sony",
+  model: "LED",
+  year: 1999,
+})
+
 
 /*
 
