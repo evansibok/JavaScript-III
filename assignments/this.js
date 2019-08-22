@@ -2,8 +2,8 @@
 * in your own words. explain the four principle for the "this" keyword below.
 *
 * 1. Global Binding - Whenever "this" is called in a global context it refers to the global window object.
-* 2. Ne
-* 3. 
+* 2. New Binding - When "this" is called in a new constructor, "this" refers to the instance of the object called.
+* 3. Implicit Binding - 
 * 4. 
 *
 * write out a code example of each explanation above
