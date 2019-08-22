@@ -92,13 +92,7 @@ function Car(model, make){
 
 Car.prototype.drive = function(distance){
   this.odometer += distance;
-  this.odometer.push()
   console.log(`I am driving at ${this.odometer} miles`);
-  if(this.crashed){
-    return `You have crashed`;
-  } else if(this.crashed === false){
-    return `You are free to move`;
-  }
 }
 
 Car.prototype.crash = function(){
