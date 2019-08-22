@@ -83,7 +83,7 @@ Person.prototype.greet = function () {
 
 Person.prototype.eatEdibles = function (food) {
     if (this.eat) {
-        this.stomach.push(food); // How do I make this return a value because it currently returns undefined?
+        this.stomach.push(food);
         return `${this.name} your ${this.stomach} is edible`;
     }
     return `${this.name}, that isn't edible`;
@@ -91,6 +91,7 @@ Person.prototype.eatEdibles = function (food) {
 
 Person.prototype.poop = function () {
     if (this.stomach) {
+      this.stomach = [];
         return `${this.name} you need to use the restroom`;
     }
     return `${this.name} you are good to go`;
@@ -111,7 +112,6 @@ var adam = new Person('Adam', '23');
 function Car(model, make) {
     this.model = model;
     this.make = make;
-    this.odometer = Number(distance);
 }
 
 Car.prototype.drive = function (distance) {
@@ -120,21 +120,47 @@ Car.prototype.drive = function (distance) {
 }
 
 Car.prototype.crash = function () {
-    this.drive.pop();
-    return `${this.model} ${this.make} has crashed and can't be driven.`;
+  if (this === true){ // *
+    this.drive = false; // *
+  }
+    return `I crashed at ${this.odometer} miles.`;
 }
 
 Car.prototype.repair = function () {
-    this.drive.push();
+  if (this === true){ // *
+    this.drive = true; // *
+  }
     return `${this.model} ${this.make} has been repaired as is safe for driving.`;
 }
 
 var toyota = new Car('Toyota', 'Camry');
 
-// toyota.drive('70');
-// toyota.crash();
-// toyota.repair();
+toyota.drive('70');
+toyota.crash();
+toyota.repair();
 
+
+// TASK 3
+
+//   - Build a Baby constructor that subclasses the Person built earlier.
+//   - Babies of course inherit the ability to greet, which can be strange.
+//   - Babies should have the ability to play, which persons don't.
+//   - By playing, a string is returned with some text of your choosing.
+
+function Baby(name, age){
+  Person.call(this, name, age);
+}
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = () => {
+  return `I am ${this.name} and I am playing!`; // * this.name doesn't return the baby's name, why?
+}
+
+const toni = new Baby({
+  name: "Baby Toni",
+  age: "12 months",
+})
 
 /*
 
