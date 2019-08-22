@@ -14,8 +14,8 @@
 // code example for Window Binding
 
 function sayMyName(name) {
-  console.log(this);
-  return this.name;
+    console.log(this);
+    return this.name;
 }
 sayMyName("Evans");
 
@@ -24,11 +24,11 @@ sayMyName("Evans");
 // code example for Implicit Binding
 
 let laugh = {
-  laughing: "I am laughing so hard!",
-  exposeLaugh: function() {
-    console.log(this);
-    return `Hello, I guess ${this.laughing}`;
-  }
+    laughing: "I am laughing so hard!",
+    exposeLaugh: function () {
+        console.log(this);
+        return `Hello, I guess ${this.laughing}`;
+    }
 };
 laugh.exposeLaugh();
 
@@ -37,13 +37,13 @@ laugh.exposeLaugh();
 // code example for New Binding
 
 function Teacher(name, course) {
-  this.name = name;
-  this.course = course;
+    this.name = name;
+    this.course = course;
 }
 
-Teacher.prototype.introduction = function() {
-  console.log(`implicit binding  `, this);
-  console.log(`My name is ${this.name} and I teach ${this.course}`);
+Teacher.prototype.introduction = function () {
+    console.log(`implicit binding  `, this);
+    console.log(`My name is ${this.name} and I teach ${this.course}`);
 };
 
 var bimbo = new Teacher("Bimbo", "Physics");
@@ -54,23 +54,24 @@ bimbo.introduction();
 // code example for Explicit Binding
 
 function Father(name, age) {
-  this.name = name;
-  this.age = age;
-  console.log(`explicit father object   `, this); // I'm not sure how this console logs both the Father and Son objects
-  this.speak = () => {
-    console.log(
-      `Hello! My name is ${this.name} and I am ${this.age} years old`
-    );
-  };
+    this.name = name;
+    this.age = age;
+    console.log(`explicit father object   `, this); // I'm not sure how this console logs both the Father and Son objects
+    this.speak = () => {
+        console.log(
+            `Hello! My name is ${this.name} and I am ${this.age} years old`
+        );
+    };
 }
-
-const akpan = new Father("Akpan", 60);
 
 function Son(name, age) {
-  Father.call(this, name, age);
-  console.log(`explicit son object  `, this); // This console logs only the son object
+    Father.call(this, name, age);
+    console.log(`explicit son object  `, this); // This console logs only the son object
 }
 
+Son.prototype = Object.create(Father.prototype);
+
+const akpan = new Father("Akpan", 60);
 const oduma = new Son("Oduma", 14);
 
 akpan.speak();

@@ -36,16 +36,6 @@
 */
 
 /*
-
-  TASK 1
-
-  - Build a Person Constructor that takes name and age.
-  - Give persons the ability to greet by returning a string stating name and age.
-  - Give persons the ability to eat edibles.
-  - When eating an edible, it should be pushed into a "stomach" property which is an array.
-  - Give persons the ability to poop.
-  - When pooping, the stomach should empty.
-
   TASK 2
 
   - Build a Car constructor that takes model name and make.
@@ -80,31 +70,31 @@
 //   - Give persons the ability to poop.
 //   - When pooping, the stomach should empty.
 
-function Person(name, age){
-  this.name = name;
-  this.age = Number(age);
-  this.eat = true;
-  this.stomach = [];
+function Person(name, age) {
+    this.name = name;
+    this.age = Number(age);
+    this.eat = true;
+    this.stomach = [];
 }
 var adam = new Person('Adam', '23');
 
-Person.prototype.greet = function(){
-  console.log(`Hello ${this.name}, you are ${this.age} today!`);
+Person.prototype.greet = function () {
+    console.log(`Hello ${this.name}, you are ${this.age} today!`);
 }
 
-Person.prototype.eatEdibles = function(food){
-  if(this.eat) {
-    this.stomach.push(food)
-    return `${this.name} your ${this.stomach} is edible`;
-  }
-  return `${this.name}, that isn't edible`;
+Person.prototype.eatEdibles = function (food) {
+    if (this.eat) {
+        this.stomach.push(food)
+        return `${this.name} your ${this.stomach} is edible`;
+    }
+    return `${this.name}, that isn't edible`;
 }
 
-Person.prototype.poop = function(){
-  if(this.stomach){
-    return `${this.name} you need to use the restroom`;
-  }
-  return `${this.name} you are good to go`;
+Person.prototype.poop = function () {
+    if (this.stomach) {
+        return `${this.name} you need to use the restroom`;
+    }
+    return `${this.name} you are good to go`;
 }
 
 // TASK 2
@@ -118,24 +108,24 @@ Person.prototype.poop = function(){
 //   - A repaired car can be driven again.
 
 function Car(model, make) {
-  this.model = model;
-  this.make = make;
-  this.odometer = Number(distance);
+    this.model = model;
+    this.make = make;
+    this.odometer = Number(distance);
 }
 
-Car.prototype.drive = function(distance) {
-  this.odometer = Number(distance);
-  return `${this.model} ${this.make} has been driven for ${this.odometer} miles`;
+Car.prototype.drive = function (distance) {
+    this.odometer = Number(distance);
+    return `${this.model} ${this.make} has been driven for ${this.odometer} miles`;
 }
 
-Car.prototype.crash = function() {
-  this.drive.pop();
-  return `${this.model} ${this.make} has crashed and can't be driven.`;
+Car.prototype.crash = function () {
+    this.drive.pop();
+    return `${this.model} ${this.make} has crashed and can't be driven.`;
 }
 
-Car.prototype.repair = function() {
-  this.drive.push();
-  return `${this.model} ${this.make} has been repaired as is safe for driving.`;
+Car.prototype.repair = function () {
+    this.drive.push();
+    return `${this.model} ${this.make} has been repaired as is safe for driving.`;
 }
 
 var toyota = new Car('Toyota', 'Camry');
