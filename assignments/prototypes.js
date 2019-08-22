@@ -76,7 +76,6 @@ function Person(name, age) {
     this.eat = true;
     this.stomach = [];
 }
-var adam = new Person('Adam', '23');
 
 Person.prototype.greet = function () {
     console.log(`Hello ${this.name}, you are ${this.age} today!`);
@@ -84,7 +83,7 @@ Person.prototype.greet = function () {
 
 Person.prototype.eatEdibles = function (food) {
     if (this.eat) {
-        this.stomach.push(food)
+        this.stomach.push(food); // How do I make this return a value because it currently returns undefined?
         return `${this.name} your ${this.stomach} is edible`;
     }
     return `${this.name}, that isn't edible`;
@@ -96,6 +95,8 @@ Person.prototype.poop = function () {
     }
     return `${this.name} you are good to go`;
 }
+
+var adam = new Person('Adam', '23');
 
 // TASK 2
 
