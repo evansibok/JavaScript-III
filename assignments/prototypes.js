@@ -144,14 +144,15 @@ const toni = new Baby({
 // With amazing and original capabilities.Build 3 small ones, or a very
 // complicated one with lots of state.Surprise us!
 
-function Electronics(info){
-  this.maker = info.maker,
-  this.year = Number(info.year),
-  this.model = info.model
+function Electronics(data){
+  this.maker = data.maker,
+  this.year = Number(data.year),
+  this.model = data.model
 }
 
-function Phone(info){
-  Electronics.call(this, info);
+// Phone, a subclass of Electronics
+function Phone(data){
+  Electronics.call(this, data);
 }
 
 Phone.prototype = Object.create(Electronics.prototype);
@@ -160,41 +161,48 @@ Phone.prototype.ring = () => {
   console.log(`${this.maker} ${this.model} Grriiiiinnnnngggg!`); // this.maker and this.model returning `undefined`
 }
 
-function Laptop(info){
-  Electronics.call(this, info);
+// Laptop, a subclass of Electronics
+function Laptop(data){
+  Electronics.call(this, data);
   this.turnOn = true;
+}
+
+Laptop.prototype = Object.create(Electronics.prototype);
+
+// TV, a subclass of Laptop
+TV.prototype = Object.create(Laptop.prototype);
+
+function TV(data) {
+  Laptop.call(this, data);
 }
 
 
 Laptop.prototype.turnOn = () => {
   if (this.turnOn)
-    console.log(`${this.maker} ${this.model} is coming ON!`); // this.maker and this.model returning `undefined`
-}
-Laptop.prototype = Object.create(Electronics.prototype);
-
-TV.prototype = Object.create(Laptop.prototype);
-
-function TV(info) {
-  Laptop.call(this, info);
+    console.log(`${this.maker} ${this.model} is coming ON!`); 
 }
 
 const samsung = new Phone({
   maker: "Samsung",
   model: "smart",
   year: 2000,
-})
+});
 
 const hp = new Laptop({
   maker: "HP",
   model: "Notebook",
   year: 2003,
-})
+});
 
 const sony = new TV({
   maker: "Sony",
   model: "LED",
   year: 1999,
-})
+});
+
+samsung.ring(); // this.maker and this.model returning `undefined`
+hp.turnOn(); // hp.turnOn is not a function
+sony.turnOn(); // sony.turnOn is not a function
 
 
 /*
