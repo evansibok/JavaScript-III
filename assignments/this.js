@@ -32,8 +32,6 @@ let laugh = {
 }
 laugh.exposeLaugh();
 
-
-
 // Principle 3
 
 // code example for New Binding
@@ -55,3 +53,24 @@ bimbo.introduction();
 
 // code example for Explicit Binding
 
+function Father(name, age){
+    this.name = name;
+    this.age = age;
+    console.log(this);
+    this.speak = () => {
+        console.log(`Hello! My name is ${this.name} and I am ${this.age} years old`);
+    }
+}
+
+const akpan = new Father('Akpan', 60);
+
+
+function Son(name, age) {
+    Father.call(this, name, age);
+    // console.log(this)
+}
+
+const oduma = new Son('Oduma', 14)
+
+akpan.speak();
+oduma.speak();
