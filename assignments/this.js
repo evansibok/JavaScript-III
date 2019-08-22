@@ -69,7 +69,7 @@ function Son(name, age) {
     console.log(`explicit son object  `, this); // This console logs only the son object
 }
 
-Son.prototype = Object.create(Father.prototype);
+// Son.prototype = Object.create(Father.prototype);
 
 const akpan = new Father("Akpan", 60);
 const oduma = new Son("Oduma", 14);
