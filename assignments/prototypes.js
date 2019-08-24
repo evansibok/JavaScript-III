@@ -52,7 +52,7 @@ function Person(name, age) {
 }
 
 Person.prototype.greet = function () {
-  console.log(`Hello ${this.name}, you are ${this.age} today!`);
+  return `Hello ${this.name}, you are ${this.age} today!`;
 }
 
 Person.prototype.eatEdibles = function (food) {
@@ -92,7 +92,7 @@ function Car(model, make){
 
 Car.prototype.drive = function(distance){
   this.odometer += distance;
-  console.log(`I am driving at ${this.odometer} miles`);
+  return `I am driving at ${this.odometer} miles`;
 }
 
 Car.prototype.crash = function(){
