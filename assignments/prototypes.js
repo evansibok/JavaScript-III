@@ -87,16 +87,19 @@ function Car(model, make){
   this.make = make;
   this.model = model;
   this.odometer = 0;
-  this.crashed = true;
+  this.crashed = false;
 }
 
 Car.prototype.drive = function(distance){
+  if (this.crashed) {
+    return `I crashed at ${this.odometer} miles!`;
+  }
   this.odometer += distance;
   return `I am driving at ${this.odometer} miles`;
 }
 
 Car.prototype.crash = function(){
-  this.crashed
+  this.crashed = true;
   return `I crashed at ${this.odometer} miles`;
 }
 
@@ -106,7 +109,6 @@ Car.prototype.repair = function(){
 }
 
 var toyota = new Car('Camry', 'E530');
-
 
 
 // TASK 3
